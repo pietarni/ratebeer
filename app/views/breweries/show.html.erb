@@ -11,6 +11,16 @@
    <%= link_to beer.name, beer %>
  <% end %>
 </p>
+
+<% if @brewery.average_rating != 0 %>
+  <p>
+    <strong><%= pluralize(@brewery.ratings.count, 'rating') %></strong>,
+    average <%= @brewery.average_rating %>
+  </p>
+<% else %>
+  <p>no ratings</p>
+<% end %>
+
 <div>
   <%= link_to "Edit this brewery", edit_brewery_path(@brewery) %> |
   <%= link_to "Back to breweries", breweries_path %>
