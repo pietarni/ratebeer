@@ -4,7 +4,11 @@
   <% @ratings.each do |rating| %>
     <li>
       <%= rating %> 
-      <%= button_to 'Delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+      <% if rating.user %>
+        <%= link_to rating.user.username, rating.user %>
+      <% else %>
+        Unknown
+      <% end %>
     </li>
   <% end %>
 </ul>

@@ -21,12 +21,24 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  <% if current_user %>
+    <p><%= current_user.username %> signed in</p>
+  <% end %>
   <body>
     <div class="navibar">
       <%= link_to 'breweries', breweries_path %>
       <%= link_to 'beers', beers_path %>
       <%= link_to 'ratings', ratings_path %>
+      <%= link_to "Join a Club", beer_clubs_path %> 
+      <% if current_user %>
+        <%= link_to "Log out", signout_path,
+          data: {
+          "turbo-method": :delete
+          }, class: "link-secondary smooth" %>
+      <% else %>
+        <%= link_to "Sign in", signin_path %> 
+        <%= link_to "Sign up", signup_path %>
+      <% end %>
     </div>
     <%= yield %>
   </body>
