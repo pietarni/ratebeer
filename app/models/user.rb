@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_secure_password
   has_many :ratings, dependent: :destroy
   has_many :memberships, dependent: :destroy
@@ -11,7 +10,7 @@ end
 
 class Rating < ApplicationRecord
   belongs_to :beer
-  belongs_to :user   # rating kuuluu myös käyttäjään
+  belongs_to :user # rating kuuluu myös käyttäjään
 
   def to_s
     "#{beer.name} #{score}"

@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: %i[ show edit update destroy ]
+  before_action :set_membership, only: %i[show edit update destroy]
 
   # GET /memberships or /memberships.json
   def index
@@ -22,14 +22,13 @@ class MembershipsController < ApplicationController
   # POST /memberships or /memberships.json
   def create
     @membership = Membership.new(beer_club_id: params[:beer_club_id], user: current_user)
-  
+
     if @membership.save
       redirect_to @membership.beer_club, notice: "You joined the club!"
     else
       redirect_to beer_clubs_path, alert: "Joining the club failed."
     end
   end
-  
 
   # PATCH/PUT /memberships/1 or /memberships/1.json
   def update
@@ -55,10 +54,9 @@ class MembershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params.expect(:id))
-    end
 
-
+  # Use callbacks to share common setup or constraints between actions.
+  def set_membership
+    @membership = Membership.find(params.expect(:id))
+  end
 end

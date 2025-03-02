@@ -13,7 +13,6 @@ class RatingsController < ApplicationController
     rating.user = current_user
     rating.save
     redirect_to current_user
-    
   end
 
   def destroy
