@@ -22,6 +22,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          
+      - name: Set up database
+        run: |
+          bin/rails db:create db:migrate RAILS_ENV=test
       - name: Run tests
         run: bundle exec rspec
       - name: Run RuboCop
