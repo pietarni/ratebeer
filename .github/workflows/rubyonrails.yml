@@ -22,7 +22,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          
+      - name: Set executable permissions for bin/rails
+        run: chmod +x bin/rails
+
       - name: Set up database
         run: |
           bin/rails db:create db:migrate RAILS_ENV=test
