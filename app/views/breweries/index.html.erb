@@ -5,6 +5,7 @@
 <h2>Breweries</h2>
 
 <div id="breweries">
+  Number of breweries: <%= @breweries.count %>
   <% @breweries.each do |brewery| %>
     <%= render brewery %>
   <% end %>

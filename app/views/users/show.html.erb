@@ -3,23 +3,24 @@
 <%= render @user %>
 
 <p>Total Ratings: <%= @user.ratings.count %></p>
-<p>Average Rating: 
-  <%= @user.ratings.any? ? (@user.ratings.map { |r| r.score }.sum / @user.ratings.count.to_f).round(2) : 0 %>
-</p>
+<p>Average Rating: <%= @user.average_rating %></p>
+
+<p>Favourite brewery: <%= @user.favorite_brewery.name if @user.favorite_brewery %></p>
 
 <div>
   <% if @user.beer_clubs.any? %>
+    <p> Is in beer clubs: </p>
     <ul>
       <% @user.beer_clubs.each do |club| %>
         <li><%= link_to club.name, beer_club_path(club) %> (Founded: <%= club.founded %>, <%= club.city %>)</li>
       <% end %>
     </ul>
   <% else %>
-    not in beer clubs
+    <p> Is not in beer clubs </p>
   <% end %>
   <% @user.ratings.each do |rating| %>
       <li>
-        <%= rating.beer.name %> – <%= rating.score %> points
+        <%= link_to rating.beer.name, rating.beer %> – <%= rating.score %> point
         <% if @user == current_user %>
           <%= link_to "Delete", rating,
             data: {

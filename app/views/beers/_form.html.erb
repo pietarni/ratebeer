@@ -4,8 +4,8 @@
       <h2><%= pluralize(beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
 
       <ul>
-        <% beer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% beer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
