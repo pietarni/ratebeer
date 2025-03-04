@@ -75,7 +75,3 @@ Metrics/MethodLength:
   
 Layout/IndentationStyle:
   Enabled: false
-
-#Pistin tämän siksi että käytän windowsia, ja tämä aiheutti ärsyttäviä turhia virheitä
-Layout/EndOfLine:
-  Enabled: false
